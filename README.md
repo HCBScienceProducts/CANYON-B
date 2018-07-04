@@ -1,2 +1,6 @@
 # CANYON-B
-Routines to robustly estimate open ocean CO2 variables and macronutrients from T, S and O2 data using Bayesian neural networks
+Matlab and R implementations of the CANYON-B method published in:
+
+Bittig et al. (2018). An alternative to static climatologies: Robust estimation of open ocean CO<sub>2</sub> variables and nutrient concentrations from T, S and O<sub>2</sub> data using Bayesian neural networks. Front. Mar. Sci. subm. http://dx.doi.org/10.3389/fmars.2018.xxxxx.
+
+When using the method, please cite the paper.
