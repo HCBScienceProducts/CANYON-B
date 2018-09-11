@@ -9,13 +9,6 @@ CANYONB <- function(date,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,edo
   #
   # Please cite the paper when using CANYON-B.
   # 
-  # output:
-  # out$(param)     - predicted variable (same size as 'pres' input)
-  # out$(param)_ci  - predicted variable uncertainty (same size as 'pres' input)
-  # out$(param)_cim - variable measurement uncertainty
-  # out$(param)_cin - variable uncertainty for Bayesian neural network mapping
-  # out$(param)_cii - variable uncertainty due to input errors
-  #
   # input:
   # date  - date (UTC) as string ("yyyy-mm-dd HH:MM")
   # lat   - latitude / °N  [-90 90]
@@ -35,6 +28,13 @@ CANYONB <- function(date,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,edo
   # edoxy:   1 % of doxy (<- This is a rather optimistic default, meant for
   # GO-SHIP quality bottle data. A reasonable default sensor doxy error would
   # be 3 % of doxy (or higher!).)
+  #
+  # output:
+  # out$(param)     - predicted variable (same size as 'pres' input)
+  # out$(param)_ci  - predicted variable uncertainty (same size as 'pres' input)
+  # out$(param)_cim - variable measurement uncertainty
+  # out$(param)_cin - variable uncertainty for Bayesian neural network mapping
+  # out$(param)_cii - variable uncertainty due to input errors
   #
   # measurement errors for AT, CT, pH, NO3, PO4, SiOH4 are 6 umol kg-1, 4
   # umol kg-1, 0.005, 2 %, 2 %, 2 %, respectively (Olsen et al. 2016)
@@ -63,8 +63,8 @@ CANYONB <- function(date,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,edo
   # - CANYON-B method:
   # Bittig et al. (2018). An alternative to static climatologies: Robust
   # estimation of open ocean CO2 variables and nutrient concentrations from
-  # T, S and O2 data using Bayesian neural networks. Front. Mar. Sci. subm.
-  # doi:10.3389/fmars.2018.xxxxxx  
+  # T, S and O2 data using Bayesian neural networks. Front. Mar. Sci. 5:328. doi:
+  # 10.3389/fmars.2018.00328 
   #
   # pCO2 requires seacarb (available from CRAN):
   # Gattuso et al. (2018). seacarb: Seawater Carbonate Chemistry. R package 
@@ -72,6 +72,7 @@ CANYONB <- function(date,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,edo
   #
   # Henry Bittig, LOV
   # v0.9, 16.04.2018, pre-release
+  # v1.0, 11.09.2018, initial publication
   
   #  The software is provided "as is", without warranty of any kind, 
   #  express or implied, including but not limited to the warranties of

@@ -62,7 +62,7 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 % - CANYON-B method:
 % Bittig et al. (2018). An alternative to static climatologies: Robust
 % estimation of open ocean CO2 variables and nutrient concentrations from
-% T, S and O2 data using Bayesian neural networks. 5:328. doi:
+% T, S and O2 data using Bayesian neural networks. Front. Mar. Sci. 5:328. doi:
 % 10.3389/fmars.2018.00328 
 %
 % pCO2 requires CO2SYS-matlab:
@@ -78,7 +78,7 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 %
 % Henry Bittig, LOV
 % v0.9, 16.04.2018, pre-release
-% v1.0, 11.00.2018, initial publication
+% v1.0, 11.09.2018, initial publication
 
 %  The software is provided "as is", without warranty of any kind, 
 %  express or implied, including but not limited to the warranties of
@@ -91,8 +91,8 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 % No input checks! Assumes informed use, e.g., same dimensions for all
 % inputs, ...
 
-%inputsdir=''; % relative or absolute path to CANYON-B wgts files
-inputsdir='/Users/hbittig/Documents/Science/Projekte/CANYON/v3/out/';
+inputsdir=''; % relative or absolute path to CANYON-B wgts files
+
 
 %% Nothing below here should need to be changed by the user %%
 
