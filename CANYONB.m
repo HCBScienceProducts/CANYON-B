@@ -9,12 +9,15 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 %
 % Please cite the paper when using CANYON-B.
 % 
-% output:
-% out.(param)     - predicted variable (same size as 'pres' input)
-% out.(param)_ci  - predicted variable uncertainty (same size as 'pres' input)
-% out.(param)_cim - variable measurement uncertainty
-% out.(param)_cin - variable uncertainty for Bayesian neural network mapping
-% out.(param)_cii - variable uncertainty due to input errors
+% input:
+% gtime - date (UTC) as matlab time (fractional days; 01-Jan-0000 00:00:00 = 1)
+% lat   - latitude / °N  [-90 90]
+% lon   - longitude / °E [-180 180] or [0 360]
+% pres  - pressure / dbar
+% temp  - in-situ temperature / °C
+% psal  - salinity
+% doxy  - dissolved oxygen / umol kg-1 (!)
+% e(var)- input error for pres, temp, psal, doxy
 %
 % default values for input errors:
 % epres:   0.5 dbar
@@ -23,6 +26,13 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 % edoxy:   1 % of doxy (<- This is a rather optimistic default, meant for
 % GO-SHIP quality bottle data. A reasonable default sensor doxy error would
 % be 3 % of doxy (or higher!).)
+%
+% output:
+% out.(param)     - predicted variable (same size as 'pres' input)
+% out.(param)_ci  - predicted variable uncertainty (same size as 'pres' input)
+% out.(param)_cim - variable measurement uncertainty
+% out.(param)_cin - variable uncertainty for Bayesian neural network mapping
+% out.(param)_cii - variable uncertainty due to input errors
 %
 % measurement errors for AT, CT, pH, NO3, PO4, SiOH4 are 6 umol kg-1, 4
 % umol kg-1, 0.005, 2 %, 2 %, 2 %, respectively (Olsen et al. 2016)
@@ -52,8 +62,8 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 % - CANYON-B method:
 % Bittig et al. (2018). An alternative to static climatologies: Robust
 % estimation of open ocean CO2 variables and nutrient concentrations from
-% T, S and O2 data using Bayesian neural networks. Front. Mar. Sci. subm.
-% doi:10.3389/fmars.2018.xxxxxx  
+% T, S and O2 data using Bayesian neural networks. 5:328. doi:
+% 10.3389/fmars.2018.00328 
 %
 % pCO2 requires CO2SYS-matlab:
 % van Heuven et al. (2011). MATLAB Program Developed for CO2 System
@@ -68,6 +78,7 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 %
 % Henry Bittig, LOV
 % v0.9, 16.04.2018, pre-release
+% v1.0, 11.00.2018, initial publication
 
 %  The software is provided "as is", without warranty of any kind, 
 %  express or implied, including but not limited to the warranties of
@@ -80,7 +91,8 @@ function out=CANYONB(gtime,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,e
 % No input checks! Assumes informed use, e.g., same dimensions for all
 % inputs, ...
 
-inputsdir=''; % relative or absolute path to CANYON-B wgts files
+%inputsdir=''; % relative or absolute path to CANYON-B wgts files
+inputsdir='/Users/hbittig/Documents/Science/Projekte/CANYON/v3/out/';
 
 %% Nothing below here should need to be changed by the user %%
 
