@@ -126,7 +126,7 @@ CANYONB <- function(date,lat,lon,pres,temp,psal,doxy,param,epres,etemp,epsal,edo
   date=as.POSIXlt(date,tz="UTC") #decimal year from date
   year=format(date,"%Y") # get year
   # and add fractional day
-  as.numeric(year)+as.double(difftime(date, as.POSIXlt(paste0(year,"-01-01 00:00"),format="%Y-%m-%d %H:%M",tz="UTC"), units = "days"))/365
+  year=as.numeric(year)+as.double(difftime(date, as.POSIXlt(paste0(year,"-01-01 00:00"),format="%Y-%m-%d %H:%M",tz="UTC"), units = "days"))/365
   
   # Latitude: new lat with Polar shift ("Bering Strait prolongation")
   # points for Arctic basin 'West' of Lomonossov ridge (along ca. -037° / 143° E)
